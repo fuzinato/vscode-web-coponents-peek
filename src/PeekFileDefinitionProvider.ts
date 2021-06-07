@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-
+import {regexpMethod} from './extension'
 export default class PeekFileDefinitionProvider
   implements vscode.DefinitionProvider
 {
@@ -19,21 +19,21 @@ export default class PeekFileDefinitionProvider
 
     const selection = doc.getWordRangeAtPosition(position);
     const selectedText = doc.getText(selection);
+
     if (!selectedText) {
       return [];
     }
 
-    let possibleFileNames: Array<string> = [selectedText];
-    let altName: string = '';
+    const match:any = selectedText.match(regexpMethod);
+    const methodName = match[3];
+    console.log(methodName);
+    // selectedText.match(/\w+/g)?.forEach((str) => {
+    //   return (altName += str[0].toUpperCase() + str.substring(1));
+    // });
 
-    selectedText.match(/\w+/g)?.forEach((str) => {
-      return (altName += str[0].toUpperCase() + str.substring(1));
-    });
-
-    if (altName) {
-      possibleFileNames.push(altName);
-    }
-    console.log('possibleFileNames,', possibleFileNames);
+    // if (altName) {
+    //   possibleFileNames.push(altName);
+    // }
     return possibleFileNames;
   }
 

@@ -1,13 +1,14 @@
 import * as vscode from 'vscode';
 import PeekFileDefinitionProvider from './PeekFileDefinitionProvider';
-
+export const regexpMethod:RegExp =  /([@|on]\w+|click)="?\$?{?(this\.)?(\w+)/;
 const languageConfiguration: vscode.LanguageConfiguration = {
-  wordPattern: /(\w+((-\w+)+)?)/,
+  wordPattern: regexpMethod,
+  // wordPattern: /(\w+((-\w+)+)?)/,
 };
 
 export function activate(context: vscode.ExtensionContext) {
   const supportedLanguages = ['javascript', 'typescript'];
-  const targetFileExtensions = ['.js', '.ts'];
+  const targetFileExtensions = ['.js', '.ts', '.tsx', 'jsx'];
 
   context.subscriptions.push(
     vscode.languages.registerDefinitionProvider(

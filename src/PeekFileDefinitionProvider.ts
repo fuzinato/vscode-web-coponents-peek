@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import {regexpMethod} from './extension'
+import { regexpMethod } from './extension';
 export default class PeekFileDefinitionProvider
   implements vscode.DefinitionProvider
 {
@@ -10,7 +10,7 @@ export default class PeekFileDefinitionProvider
     this.targetFileExtensions = targetFileExtensions;
   }
 
-  getComponentName(position: vscode.Position): String[] {
+  getMethodName(position: vscode.Position): String[] {
     const doc = vscode.window.activeTextEditor?.document;
 
     if (!doc) {
@@ -24,7 +24,7 @@ export default class PeekFileDefinitionProvider
       return [];
     }
 
-    const match:any = selectedText.match(regexpMethod);
+    const match: any = selectedText.match(regexpMethod);
     const methodName = match[3];
     console.log(methodName);
     // selectedText.match(/\w+/g)?.forEach((str) => {
@@ -34,7 +34,7 @@ export default class PeekFileDefinitionProvider
     // if (altName) {
     //   possibleFileNames.push(altName);
     // }
-    return possibleFileNames;
+    return methodName;
   }
 
   searchFilePath(fileName: String): Thenable<vscode.Uri[]> {
@@ -46,9 +46,10 @@ export default class PeekFileDefinitionProvider
     position: vscode.Position,
     token: vscode.CancellationToken
   ): Promise<vscode.Location | vscode.Location[] | any> {
+    console.log(document);
     let filePaths = [];
-    const componentNames = this.getComponentName(position);
-    const searchPathActions = componentNames.map(this.searchFilePath);
+    const methodName = this.getMethodName(position);
+    const searchPathActions = methodName.map(this.searchFilePath);
     const searchPromises = Promise.all(searchPathActions); // pass array of promises
 
     return searchPromises.then(

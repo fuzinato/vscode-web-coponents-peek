@@ -6,7 +6,7 @@ const languageConfiguration: vscode.LanguageConfiguration = {
 };
 
 export function activate(context: vscode.ExtensionContext) {
-  const supportedLanguages = ['javascript', 'typescript', 'js', 'ts'];
+  const supportedLanguages = ['javascript', 'typescript'];
   const targetFileExtensions = ['.js', '.ts'];
 
   context.subscriptions.push(

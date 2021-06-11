@@ -6,7 +6,6 @@ export default class PeekFileDefinitionProvider
   targetFileExtensions: string[] = [];
 
   constructor(targetFileExtensions: string[] = []) {
-    console.log(targetFileExtensions);
     this.targetFileExtensions = targetFileExtensions;
   }
 
@@ -24,21 +23,11 @@ export default class PeekFileDefinitionProvider
     }
 
     let possibleFileNames: Array<string> = [selectedText];
-    let altName: string = '';
-
-    selectedText.match(/\w+/g)?.forEach((str) => {
-      return (altName += str[0].toUpperCase() + str.substring(1));
-    });
 
     this.targetFileExtensions.forEach((ext) => {
       possibleFileNames.push(selectedText + ext);
-      possibleFileNames.push(altName + ext);
     });
 
-    if (altName) {
-      possibleFileNames.push(altName);
-    }
-    console.log('possibleFileNames,', possibleFileNames);
     return possibleFileNames;
   }
 

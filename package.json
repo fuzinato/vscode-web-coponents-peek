@@ -2,7 +2,7 @@
   "name": "web-components-peek",
   "displayName": "web-components-peek",
   "description": "Allows peek and goto definition for web components files.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "dariofuzinato",
   "icon": "images/wcpeek-icon.png",
   "license": "MIT",
@@ -15,10 +15,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/fussinatto/vscode-components-peek"
+    "url": "https://github.com/fuzinato/vscode-web-coponents-peek"
   },
   "bugs": {
-    "url": "https://github.com/fussinatto/vscode-components-peek/issues"
+    "url": "https://github.com/fuzinato/vscode-web-coponents-peek/issues"
   },
   "engines": {
     "vscode": "^1.14.0"

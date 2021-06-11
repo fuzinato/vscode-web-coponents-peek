@@ -17,6 +17,10 @@ Contributions and suggestions are greatly appreciated.
 
 ## Release Notes
 
+### 1.0.1
+
+- Fix git repo link
+
 ### 1.0.0
 
 - Initial release

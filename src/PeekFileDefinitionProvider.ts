@@ -30,6 +30,11 @@ export default class PeekFileDefinitionProvider
       return (altName += str[0].toUpperCase() + str.substring(1));
     });
 
+    this.targetFileExtensions.forEach((ext) => {
+      possibleFileNames.push(selectedText + ext);
+      possibleFileNames.push(altName + ext);
+    });
+
     if (altName) {
       possibleFileNames.push(altName);
     }

@@ -1,8 +1,8 @@
 {
   "name": "web-components-peek",
-  "displayName": "web-components-peek",
+  "displayName": "Web Components Peek",
   "description": "Allows peek and goto definition for web components files.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "publisher": "dariofuzinato",
   "icon": "images/wcpeek-icon.png",
   "license": "MIT",
